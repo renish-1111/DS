@@ -1,18 +1,18 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int top = 0;
+int top = -1;
 void push();
 void pop();
 void show();
 
 int main()
 {
-    int SIZE;
-    printf("Enter Size:");
-    scanf("%d", &SIZE);
-    int inp_array[SIZE];
+    int size;
+    printf("Enter size of Stack:");
+    scanf("%d", &size);
 
+    int stack[size];
     int choice;
 
     while (1)
@@ -25,13 +25,13 @@ int main()
         switch (choice)
         {
         case 1:
-            push(SIZE, inp_array);
+            push(stack, size - 1);
             break;
         case 2:
-            pop(inp_array);
+            pop(stack);
             break;
         case 3:
-            show(inp_array);
+            show(stack);
             break;
         case 4:
             exit(0);
@@ -42,46 +42,46 @@ int main()
     }
 }
 
-void push(int SIZE, int *inp_array)
+void push(int *A,int size)
 {
+    int x;
 
-    if (top < SIZE)
-    {
-        printf("\nEnter the element to be added onto the stack: ");
-        scanf("%d", inp_array + top);
-        top = top + 1;
-    }
-    else
+    if (top >= size)
     {
         printf("\nOverflow!!");
     }
+    else
+    {
+        printf("\nEnter the element to be added onto the stack: ");
+        scanf("%d", &x);
+        top = top + 1;
+        *(A + top) = x;
+    }
 }
 
-void pop(int *inp_array)
+void pop(int *A)
 {
-    if (top > 0)
-    {
-        printf("\nPopped element: %d", *(inp_array + top));
-        top = top - 1;
-    }
-    else
+    if (top == -1)
     {
         printf("\nUnderflow!!");
     }
+    else
+    {
+        printf("\nPopped element: %d", *(A+top));
+        top = top - 1;
+    }
 }
 
-void show(int *inp_array)
+void show(int *A)
 {
-    if (top > 0)
+    if (top == -1)
+    {
+        printf("\nUnderflow!!");
+    }
+    else
     {
         printf("\nElements present in the stack: \n");
         for (int i = top; i >= 0; --i)
-        {
-            printf("%d\n", *(inp_array + i - 1));
-        }
-    }
-    else
-    {
-        printf("\nUnderflow!!");
+            printf("%d\n", *(A+i));
     }
 }

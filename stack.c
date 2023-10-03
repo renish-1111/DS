@@ -6,7 +6,7 @@ void display(int *A, int top)
         printf("%d\n", *(A + i));
     }
 }
-void puss(int *A, int top)
+void push(int *A, int top)
 {
     if (top != top - 1)
     {
@@ -41,7 +41,7 @@ MENU:
     switch (n)
     {
     case 1:
-        puss(stack, size - 1);
+        push(stack, size - 1);
         goto MENU;
         break;
 
