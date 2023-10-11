@@ -1,58 +1,87 @@
 #include <stdio.h>
-void display(int *A, int top)
-{
-    for (int i = 0; i <= top; i++)
-    {
-        printf("%d\n", *(A + i));
-    }
-}
-void push(int *A, int top)
-{
-    if (top != top - 1)
-    {
-        printf("Enter number for puss:");
-        scanf("%d", (A + top));
-        top = top - 1;
-    }
-    else
-    {
-        printf("Over Flow");
-    }
-}
-void pop(int *A, int top)
-{
-    scanf("%d", *(A + top));
-    top = top - 1;
-}
+#include <stdlib.h>
+
+void push();
+void pop();
+void show();
+
 int main()
 {
+    int *top = -1;
     int size;
     printf("Enter size of Stack:");
     scanf("%d", &size);
 
     int stack[size];
-    int n;
+    int choice;
 
-MENU:
-    printf("1.PUSS \n2.POP \n");
-    printf("Enter number:");
-    scanf("%d", &n);
-
-    switch (n)
+    while (1)
     {
-    case 1:
-        push(stack, size - 1);
-        goto MENU;
-        break;
+        printf("\nPerform operations on the stack:");
+        printf("\n1.Push the element\n2.Pop the element\n3.Show\n4.End");
+        printf("\n\nEnter the choice: ");
+        scanf("%d", &choice);
 
-    case 2:
-        pop(stack, size - 1);
-        goto MENU;
-        break;
+        switch (choice)
+        {
+        case 1:
+            push(stack, size - 1,top);
+            break;
+        case 2:
+            pop(stack,top);
+            break;
+        case 3:
+            show(stack,top);
+            break;
+        case 4:
+            exit(0);
 
-    case 3:
-        display(stack, size - 1);
-        break;
+        default:
+            printf("\nInvalid choice!!");
+        }
     }
-    return 0;
+}
+
+void push(int *A,int size,int *top)
+{
+    int x;
+
+    if (*top >= size)
+    {
+        printf("\nOverflow!!");
+    }
+    else
+    {
+        printf("\nEnter the element to be added onto the stack: ");
+        scanf("%d", &x);
+        *top = *top + 1;
+        *(A + *top) = x;
+    }
+}
+
+void pop(int *A,int *top)
+{
+    if (*top == -1)
+    {
+        printf("\nUnderflow!!");
+    }
+    else
+    {
+        printf("\nPopped element: %d", *(A+*top));
+        *top = *top - 1;
+    }
+}
+
+void show(int *A,int *top)
+{
+    if (*top == -1)
+    {
+        printf("\nUnderflow!!");
+    }
+    else
+    {
+        printf("\nElements present in the stack: \n");
+        for (int i = *top; i >= 0; --i)
+            printf("%d\n", *(A+i));
+    }
 }
