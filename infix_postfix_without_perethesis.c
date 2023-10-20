@@ -3,28 +3,7 @@
 
 char stack[100];
 int top = -1;
-int check(char *e)
-{
-    while (*e != NULL)
-    {
-        if (1 != isalnum(*e))
-        {
-            return 0;
-        }
-        e = +2;
-    }
-    e = 1;
-    while (*e != NULL)
-    {
-        if (1 == isalnum(*e))
-        {
-            return 0;
-        }
-        e = +2;
-    }
 
-    return 1;
-}
 void push(char x)
 {
     stack[++top] = x;
@@ -57,11 +36,6 @@ int main()
     printf("\n");
     e = exp;
 
-    if (check(exp) == 0)
-    {
-        printf("Invalid exp!!!");
-    }
-    
     while (*e != '\0')
     {
 
