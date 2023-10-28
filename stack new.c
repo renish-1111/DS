@@ -100,7 +100,7 @@ void change(int *A, int i, int x)
     else
     {
         *(A + top + 1 - i) = x;
-        printf("%dth position is change with %d", i + 1, *(A + top + 1 - i));
+        printf("%dth position is change with %d", i , *(A + top + 1 - i));
     }
 }
 
