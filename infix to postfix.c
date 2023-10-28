@@ -52,6 +52,7 @@ int main()
         {
             while (priority(stack[top]) >= priority(*e))
                 printf("%c", pop());
+
             push(*e);
         }
         e++;
