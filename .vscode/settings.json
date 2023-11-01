@@ -2,6 +2,7 @@
     "files.associations": {
         "TOH.C": "cpp",
         "toh": "c",
-        "CC.C": "cpp"
+        "CC.C": "cpp",
+        "stdio.h": "c"
     }
 }

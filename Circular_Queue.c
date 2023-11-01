@@ -34,10 +34,10 @@ int main()
             Insert(Q, size, i);
             break;
         case 2:
-            Delete(Q);
+            Delete(Q, size);
             break;
         case 3:
-            Display(Q);
+            Display(Q, size);
             break;
         case 4:
             exit(0);
@@ -49,8 +49,8 @@ int main()
 
 void Insert(int *Q, int size, int i)
 {
-
-    if (R == size - 1)
+    
+    if ((R + 1) % size == F)
         printf("Over Flow!!");
     else if (F == -1 && R == -1)
     {
@@ -59,14 +59,15 @@ void Insert(int *Q, int size, int i)
     }
     else
     {
-        R++;
+        R = (R + 1) % size;
         *(Q + R) = i;
     }
 }
-void Delete(int *Q)
+void Delete(int *Q, int size)
 {
     if (F == -1 && R == -1)
         printf("Under Flow!!");
+
     else if (R == F)
     {
         printf("Deleted element is %d", *(Q + F));
@@ -75,14 +76,23 @@ void Delete(int *Q)
     else
     {
         printf("Deleted element is %d", *(Q + F));
-        F++;
+        F = (F + 1) % size;
     }
 }
-void Display(int *Q)
+void Display(int *Q, int size)
 {
-    if (F==-1 &&R == -1)
+    if (F == -1 && R == -1)
+    {
         printf("Queue is empty");
+    }
     else
-        for (int i = F; i <= R; i++)
+    {
+        int i = F;
+        while (i != R)
+        {
             printf("%d  ", *(Q + i));
+            i = (i + 1) % size;
+        }
+        printf("%d", *(Q + i));
+    }
 }
