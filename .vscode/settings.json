@@ -1,6 +1,7 @@
 {
     "files.associations": {
         "TOH.C": "cpp",
-        "toh": "c"
+        "toh": "c",
+        "CC.C": "cpp"
     }
 }
