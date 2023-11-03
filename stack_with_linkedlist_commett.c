@@ -79,11 +79,12 @@ int main()
     int choice;
     int i;
 
+    printf("\nPerform operations on the stack:");
+    printf("\n1.Push the element\n2.Pop the element\n3.Peek the element\n4.Display\n5.end\n");
+
     while (1)
     {
-        printf("\nPerform operations on the stack:");
-        printf("\n1.Push the element\n2.Pop the element\n3.Peek the element\n4.Display\n5.end");
-        printf("\n\nEnter the choice: ");
+        printf("\nEnter the choice: ");
         scanf("%d", &choice);
         switch (choice)
         {
