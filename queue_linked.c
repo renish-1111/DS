@@ -95,7 +95,7 @@ int main()
             enqueue(q, i);
             break;
         case 2:
-            printf("Dequeued element: %d\n", dequeue(q));
+            printf("Deleted element: %d\n", dequeue(q));
             break;
         case 3:
             print_queue(q);
