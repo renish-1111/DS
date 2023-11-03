@@ -190,9 +190,20 @@ int menu()
 int main()
 {
     int choice, data, pos; // Create variables to store the choice, data and position
+    printf("Menu:\n");     // Print the menu
+    printf("1. Insert a node at the front of the list.\n");
+    printf("2. Insert a node at the end of the list.\n");
+    printf("3. Insert a node such that the list is in ascending order.\n");
+    printf("4. Delete the first node of the list.\n");
+    printf("5. Delete a node before a specified position.\n");
+    printf("6. Delete a node after a specified position.\n");
+    printf("7. Display the list.\n");
+    printf("8. Exit.\n");
+
     do
     {
-        choice = menu(); // Call the menu function and store the choice
+        printf("\nEnter your choice: "); // Prompt the user to enter the choice
+        scanf("%d", &choice);
         switch (choice)
         {                                              // Execute the appropriate case based on the choice
         case 1:                                        // Insert a node at the front of the list

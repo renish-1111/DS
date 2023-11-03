@@ -62,11 +62,6 @@ int peek(struct stack *s)
     return s->top->data;
 }
 
-int is_empty(struct stack *s)
-{
-    return s->top == NULL;
-}
-
 void display(struct stack *s)
 {
     struct node *curr = s->top;
