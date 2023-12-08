@@ -3,6 +3,7 @@
         "TOH.C": "cpp",
         "toh": "c",
         "CC.C": "cpp",
-        "stdio.h": "c"
+        "stdio.h": "c",
+        "Circular_Linklist.C": "cpp"
     }
 }
