@@ -43,29 +43,45 @@ void insertAtEnd(struct Node **head, int value)
 
 void insertBeforePosition(struct Node **head, int position, int value)
 {
+    if (position <= 0)
+    {
+        printf("Invalid position\n");
+        return;
+    }
+
     struct Node *newNode = createNode(value);
 
     if (*head == NULL)
     {
-        printf("List is empty\n");
-        return;
-    }
-
-    struct Node *temp = *head;
-    int currentPosition = 1;
-
-    while (temp->next != *head && currentPosition < position - 1)
-    {
-        temp = temp->next;
-        currentPosition++;
-    }
-
-    newNode->next = temp->next;
-    temp->next = newNode;
-
-    if (currentPosition == 1)
-    {
         *head = newNode;
+        newNode->next = *head;
+    }
+    else
+    {
+        struct Node *temp = *head;
+        int currentPosition = 1;
+
+        if (position == 1)
+        {
+            newNode->next = *head;
+            while (temp->next != *head)
+            {
+                temp = temp->next;
+            }
+            temp->next = newNode;
+            *head = newNode;
+        }
+        else
+        {
+            while (temp->next != *head && currentPosition < position - 1)
+            {
+                temp = temp->next;
+                currentPosition++;
+            }
+
+            newNode->next = temp->next;
+            temp->next = newNode;
+        }
     }
 }
 
@@ -96,6 +112,12 @@ void deleteAfterPosition(struct Node **head, int position)
     if (*head == NULL)
     {
         printf("List is empty\n");
+        return;
+    }
+
+    if (position <= 0)
+    {
+        printf("Invalid position\n");
         return;
     }
 
@@ -163,12 +185,12 @@ int main()
 {
     struct Node *head = NULL;
 
-    printf("1.Insert a node at the end of the linked list.\n");
-    printf("2.Insert a node before specified position. \n");
-    printf("3.Delete a first node of the linked list.\n");
-    printf("4.Delete a node after specified position.\n");
-    printf("5.Display.\n");
-    printf("6.End.\n");
+    printf("1. Insert a node at the end of the linked list.\n");
+    printf("2. Insert a node before specified position.\n");
+    printf("3. Delete the first node of the linked list.\n");
+    printf("4. Delete a node after specified position.\n");
+    printf("5. Display.\n");
+    printf("6. End.\n");
 
     int choice, data, position;
 
@@ -195,15 +217,19 @@ int main()
             deleteFirstNode(&head);
             break;
         case 4:
-            printf("List after deleting after position:");
-            scanf("%d",&position);
+            printf("Enter position:");
+            scanf("%d", &position);
             deleteAfterPosition(&head, position);
             break;
         case 5:
             displayList(head);
             break;
         case 6:
+            freeList(&head);
             exit(0);
+            break;
+        default:
+            printf("Invalid choice. Please try again.\n");
             break;
         }
 
